@@ -107,12 +107,6 @@ Wanderlust/
 
 ---
 
-## 📸 Screenshots
-
-> _Add screenshots of your app here_
-
----
-
 ## 🙋‍♂️ Author
 
 **Omkar Bhalekar**
