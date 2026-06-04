@@ -1,0 +1,70 @@
+<% if(successMsg && successMsg.length != 0){ %>
+
+<div id="container" class="mt-10 flex justify-center  items-center">
+<div class="bg-teal-100 w-1/2 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+  <div class="flex">
+    <div class="py-1"></div>
+    <div class="flex justify-between items-center w-full">
+        <p class="text-sm">
+            <%= successMsg %>
+        </p>
+        <button id="cross" onclick="document.getElementById('container').style.display='none'" ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("container");
+  
+  setTimeout(()=>{
+    container.style.display = "none"
+  },3000)
+  });
+</script>
+
+
+<% } %>
+
+<% if(errorMsg && errorMsg.length != 0){ %>
+
+<div id="container" class="mt-10 flex justify-center  items-center">
+<div class="bg-red-100 w-1/2 rounded-b text-red-700 px-4 py-3 shadow-md" role="alert">
+  <div class="flex">
+    <div class="py-1"></div>
+    <div class="flex justify-between items-center w-full">
+        <p class="text-sm">
+            <%= errorMsg %>
+        </p>
+        <button id="cross" onclick="document.getElementById('container').style.display='none'" ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded",()=>{
+    const container = document.getElementById("container");
+
+    setTimeout(()=>{
+      container.style.display = "none";
+    },3000)
+  })
+</script>
+
+
+
+
+<% } %>
+
+

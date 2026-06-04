@@ -1,0 +1,184 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+  <div class="flex justify-center items-start min-h-screen pt-10 px-6">
+    <div class="bg-white border border-gray-200 rounded-2xl shadow-lg p-8 w-full max-w-lg">
+
+      <!-- Header -->
+      <div class="flex items-center gap-3 mb-6">
+
+        <div>
+          <h2 class="text-lg font-semibold text-gray-900">
+            Leave a Review
+          </h2>
+          <p class="text-sm text-gray-500">
+            Share your experience with the host
+          </p>
+        </div>
+      </div>
+
+      <form id="form" method="post" action="/listings/<%= listing.id %>/review" class="space-y-6" novalidate>
+
+        <!-- Rating -->
+        <div class="border-t border-gray-100 pt-4">
+          <label class="block text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">
+            Rating
+          </label>
+
+          <input  type="range" id="rating" name="review[rating]" min="1" max="5" value="3"
+            oninput="updateRating(this.value)" class="
+w-full
+h-2
+appearance-none
+bg-gray-300
+rounded-full
+cursor-pointer
+
+[&::-webkit-slider-thumb]:appearance-none
+[&::-webkit-slider-thumb]:h-4
+[&::-webkit-slider-thumb]:w-4
+[&::-webkit-slider-thumb]:rounded-full
+[&::-webkit-slider-thumb]:bg-gray-700
+
+[&::-moz-range-thumb]:h-4
+[&::-moz-range-thumb]:w-4
+[&::-moz-range-thumb]:rounded-full
+[&::-moz-range-thumb]:bg-gray-700
+">
+
+          <!-- Scale -->
+          <div class="flex justify-between mt-2 px-1">
+            <span class="text-xs text-gray-400">1</span>
+            <span class="text-xs text-gray-400">2</span>
+            <span class="text-xs text-gray-400">3</span>
+            <span class="text-xs text-gray-400">4</span>
+            <span class="text-xs text-gray-400">5</span>
+          </div>
+
+          <!-- Live Rating -->
+          <!-- <div class="text-center mt-4">
+            <span id="rating-display" class="text-2xl font-bold text-gray-700">
+              3
+            </span>
+
+            <span id="rating-label" class="ml-2 text-sm text-gray-500">
+              Okay
+            </span>
+          </div>-->
+        </div> 
+
+        <!-- Review Text -->
+        <div class="mt-8">
+          <label for="comment" class="block text-xs font-semibold text-gray-500 uppercase tracking-widest mb-2">
+            Your Review
+          </label>
+
+          <textarea required id="comment" name="review[comment]" rows="5"
+            placeholder="Tell others what made this stay special..." class="
+          w-full
+          border border-gray-300
+          rounded-xl
+          px-4 py-3
+          text-sm
+          bg-gray-50
+          focus:outline-none
+          focus:ring-2
+          focus:ring-gray-700
+          resize-none
+          "></textarea>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="
+                mt-4
+                w-full
+                bg-rose-500
+                hover:bg-rose-600
+                active:scale-95
+                text-white
+                font-semibold
+                rounded-xl
+                py-3
+                transition-all
+                duration-200
+                shadow-md
+                hover:shadow-lg
+                ">
+          Submit Review
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("form");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      
+      let isValid = true;
+
+      form.querySelectorAll("[required]").forEach(field => {
+        if (!field.value.trim()) {
+          showError(field);
+          isValid = false;
+        } else {
+          clearError(field);
+        }
+      });
+
+      if (isValid) {
+        form.submit();
+      }
+    });
+
+    function showError(field) {
+      field.classList.add("ring-1", "ring-rose-500", "border-rose-500");
+      field.classList.remove("border-gray-300");
+
+      if (!field.nextElementSibling?.classList.contains("error-msg")) {
+        const msg = document.createElement("p");
+        msg.className = "error-msg text-rose-500 text-xs mt-1";
+        msg.textContent = getErrorMessage(field);
+        field.insertAdjacentElement("afterend", msg);
+      }
+    }
+
+    function clearError(field) {
+      field.classList.remove("ring-1", "ring-rose-500", "border-rose-500");
+      field.classList.add("border-gray-300");
+
+      if (field.nextElementSibling?.classList.contains("error-msg")) {
+        field.nextElementSibling.remove();
+      }
+    }
+
+    function getErrorMessage(field) {
+      const messages = {
+        "review[comment]" : "Review is required",  
+      };
+      return messages[field.name] || "This field is required";
+    }
+
+    form.querySelectorAll("[required]").forEach(field => {
+      field.addEventListener("input", () => clearError(field));
+    });
+  </script>
+
+  <!-- <script>
+    const labels = [
+      '',
+      'Terrible',
+      'Poor',
+      'Okay',
+      'Great',
+      'Excellent'
+    ];
+
+    function updateRating(value) {
+      document.getElementById('rating-display').textContent = value;
+      document.getElementById('rating-label').textContent = labels[value];
+    }
+
+    updateRating(3);
+  </script> -->

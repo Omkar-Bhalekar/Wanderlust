@@ -1,0 +1,44 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<body>
+
+
+    <div class="flex items-center justify-around"><h2 class="text-2xl font-semibold p-2">All Listings</h2></div>
+  
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-6 max-w-7xl mx-auto auto-rows-fr">
+
+    <% for (const listing of allListing) { %>
+    
+    <a href="/listings/<%= listing.id %>">
+
+      <div class="rounded-xl border border-gray-200 shadow-md overflow-hidden flex flex-col h-full transition-all duration-300 ease-in-out hover:shadow-xl  hover:-translate-y-1">
+
+        <img src="<%= listing.image %>" alt="card image" class="w-full h-48 object-cover">
+
+        <div class="p-4 flex flex-col grow">
+
+          <h2 class="text-xl font-semibold mb-2">
+            <%= listing.title %>
+          </h2>
+
+          <p class="p-1 mb-1 font-semibold">
+            ₹<%= listing.price.toLocaleString("en-IN") %> / night
+          </p>
+
+          <p class="text-gray-500 text-sm line-clamp-3 grow">
+            <%= listing.description %>
+          </p>
+
+        </div>
+
+      </div>
+    
+    </a>
+
+    <% } %>
+
+  </div>
+</body>
+
+</body>

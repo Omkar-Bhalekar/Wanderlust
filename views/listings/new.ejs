@@ -1,0 +1,132 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body class="w-full bg-white">
+
+    
+    <div class="w-1/2 m-auto">
+        <div class="font-semibold mt-10 text-xl text-gray-800">
+          <h3>New Listing</h3>
+        </div>
+        
+      <form novalidate id="form" method="post" action="/listings"> 
+        <div class="mt-6">
+            <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+            <div class="mt-2">
+              <input id="title" type="text" name="listing[title]" placeholder="Enter Title" required 
+                class="block w-full rounded-lg border border-gray-300 py-2.5 px-4 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:border-transparent sm:text-sm" />
+            </div>
+        </div>
+
+        <div class="mt-6">
+            <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+          <div class="mt-2">
+            <textarea required id="description" name="listing[description]" rows="3" 
+              class="block w-full rounded-lg border border-gray-300 py-2.5 px-4 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:border-transparent sm:text-sm"></textarea>
+          </div>
+          <p class="mt-2 text-xs text-gray-500">Write a short description about listing.</p>
+        </div> 
+
+        <div class="flex lg:flex-row w-full gap-x-6 flex-col">
+          <div class="mt-6 w-1/4">
+              <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+            <div class="mt-2">
+              <input required id="price" type="number" min="1" step="1" name="listing[price]" placeholder="Enter Price" 
+                class="block w-full rounded-lg border border-gray-300 py-2.5 px-4 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:border-transparent sm:text-sm" />
+            </div>
+            <p class="mt-2 text-xs text-gray-500">Price in rupees for one night.</p>
+          </div>
+
+          <div class="mt-6 flex-1">
+            <label for="image-url" class="block text-sm font-medium text-gray-700">Cover Photo</label>
+            <div class="mt-2">
+              <input id="image-url" type="text" name="listing[image]" placeholder="Enter Image URL" 
+                class="block w-full rounded-lg border border-gray-300 py-2.5 px-4 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:border-transparent sm:text-sm" />
+            </div>
+          </div>
+        </div>  
+
+        <div class="flex lg:flex-row w-full gap-x-6 flex-col">
+          <div class="mt-6 flex-1">
+            <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
+            <div class="mt-2">
+              <input required id="location" type="text" name="listing[location]" placeholder="Enter location" 
+                class="block w-full rounded-lg border border-gray-300 py-2.5 px-4 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:border-transparent sm:text-sm" />
+            </div>
+          </div> 
+          <div class="mt-6 flex-1">
+            <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+            <div class="mt-2">
+              <input required id="country" type="text" name="listing[country]" placeholder="Enter country" 
+                class="block w-full rounded-lg border border-gray-300 py-2.5 px-4 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:border-transparent sm:text-sm" />
+            </div>
+          </div> 
+        </div>    
+
+        <div class="mt-10 mb-40 flex justify-center">
+          <button type="submit" 
+            class="bg-rose-500 py-3 font-semibold px-12 rounded-lg text-white hover:bg-rose-600 transition-colors duration-200">
+            Create
+          </button>
+        </div> 
+            
+      </form>      
+    </div>
+
+  <script>
+    const form = document.getElementById("form");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      
+      let isValid = true;
+
+      form.querySelectorAll("[required]").forEach(field => {
+        if (!field.value.trim()) {
+          showError(field);
+          isValid = false;
+        } else {
+          clearError(field);
+        }
+      });
+
+      if (isValid) {
+        form.submit();
+      }
+    });
+
+    function showError(field) {
+      field.classList.add("ring-1", "ring-rose-500", "border-rose-500");
+      field.classList.remove("border-gray-300");
+
+      if (!field.nextElementSibling?.classList.contains("error-msg")) {
+        const msg = document.createElement("p");
+        msg.className = "error-msg text-rose-500 text-xs mt-1";
+        msg.textContent = getErrorMessage(field);
+        field.insertAdjacentElement("afterend", msg);
+      }
+    }
+
+    function clearError(field) {
+      field.classList.remove("ring-1", "ring-rose-500", "border-rose-500");
+      field.classList.add("border-gray-300");
+
+      if (field.nextElementSibling?.classList.contains("error-msg")) {
+        field.nextElementSibling.remove();
+      }
+    }
+
+    function getErrorMessage(field) {
+      const messages = {
+        "listing[title]"       : "Title is required",
+        "listing[description]" : "Description is required",
+        "listing[price]"       : "Price is required",
+        "listing[location]"    : "Location is required",
+        "listing[country]"     : "Country is required",
+      };
+      return messages[field.name] || "This field is required";
+    }
+
+    form.querySelectorAll("[required]").forEach(field => {
+      field.addEventListener("input", () => clearError(field));
+    });
+  </script>
+</body>

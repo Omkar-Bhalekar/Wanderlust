@@ -1,0 +1,74 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+<div class="w-1/2 m-auto">
+        <div class="font-semibold mt-10 text-xl">
+          <h3 > Edit Listing</h3>
+        </div>
+        
+      <form method="post" action="/listings/<%= listing.id %>/update?_method=PUT"">
+        <div class="mt-6">
+            <label for="title" class="block text-sm/6 font-medium text-black-900">Title</label>
+            <div class="mt-2">
+            <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-red-400">
+              <input id="title" type="text" name="listing[title]" value="<%= listing.title %>" class="block min-w-0 grow bg-white py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" />
+            </div>
+            </div>
+        </div>
+
+        <div class="mt-6">
+            <label for="description" class="block text-sm/6 font-medium text-black-900">Description</label>
+          <div class="mt-2">
+            <textarea id="description" name="listing[description]" rows="3" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus-within:outline-red-400 sm:text-sm/6"><%= listing.description %></textarea>
+          </div>
+          <p class="mt-3 text-sm/6 text-gray-600">Write a short discription about listing.</p>
+           
+        </div> 
+
+
+      <div class="flex lg:flex-row w-full justify-self-center gap-x-20 flex-col">
+        <div class="mt-6 w-1/4">
+            <label for="price" class="block text-sm/6 font-medium text-black-900">Price</label>
+          <div class="mt-2">
+            <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-red-400">
+              <input id="price" type="number" name="listing[price]" value="<%= listing.price %>" class="block min-w-0 grow bg-white py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" />
+            </div>
+          </div><p class="mt-2 text-sm/6 text-gray-600 w-full">Price in rupees for one night.</p>
+          
+        </div>
+
+          <div class="mt-6 w-full">
+          <label for="image-url" class="block text-sm/6 font-medium text-black-900">Cover Photo</label>
+          <div class="mt-2">
+            <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-red-400">
+              <input id="image-url" type="text" name="listing[image]" value="<%= listing.image %>" class="block min-w-0 grow bg-white py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" />
+          </div>
+          </div>
+        </div>
+      </div>  
+
+
+    <div class="flex lg:flex-row w-full justify-self-center gap-x-20 flex-col">
+        <div class="mt-6 w-full">
+          <label for="location" class="block text-sm/6 font-medium text-black-900">Loacation</label>
+          <div class="mt-2">
+            <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-red-400">
+              <input id="location" type="text" name="listing[location]" value="<%= listing.location %>"  class="block min-w-0 grow bg-white py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" />
+          </div>
+          </div>
+        </div> 
+        <div class="mt-6 w-full">
+          <label for="country" class="block text-sm/6 font-medium text-black-900">Country</label>
+          <div class="mt-2">
+            <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-red-400">
+              <input id="country" type="text" name="listing[country]" value="<%= listing.country %>" class="block min-w-0 grow bg-white py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" />
+          </div>
+          </div>
+        </div> 
+    </div>    
+         <div class="mt-15 mb-40 flex justify-around">
+          <button type="submit" class="bg-red-400 border py-2 font-semibold px-8 rounded-xl text-white hover:text-red-400 hover:bg-white">Update</button>
+        </div> 
+            
+      </form>      
+    </div>
+</body> 
