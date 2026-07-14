@@ -7,7 +7,7 @@ A full-stack web application inspired by Airbnb that allows users to list their 
 ## 🚀 Features
 
 * Create, view, edit, and delete property listings
-* Responsive UI using Bootstrap 5
+* Responsive UI using Tailwind
 * Server-side and client-side form validation
 * Review system with ratings and comments
 * Session-based authentication
