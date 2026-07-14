@@ -35,7 +35,7 @@ A full-stack web application inspired by Airbnb that allows users to list their 
 
 * EJS
 * EJS-Mate
-* Bootstrap 5
+* Tailwind
 
 ### Authentication & Security
 
@@ -88,7 +88,7 @@ Wanderlust/
 
 ### ✅ Form Validation
 
-* Client-side validation using Bootstrap
+* Client-side validation using Tailwind
 * Server-side validation using JOI
 * Custom validation middleware
 
