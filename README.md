@@ -1,125 +1,210 @@
-# 🌍 Wanderlust
+# 🏡 Wanderlust - Airbnb Clone
 
-A full-stack travel listing web application where users can explore, create, and review travel destinations. Built with Node.js, Express, MongoDB, and EJS.
+A full-stack web application inspired by Airbnb that allows users to list their properties and explore accommodations shared by others. The project demonstrates CRUD operations, authentication, session management, form validation, MongoDB relationships, and RESTful architecture using the MERN backend ecosystem.
 
 ---
 
-## ✨ Features
+## 🚀 Features
 
-- 🏠 Browse travel listings from around the world
-- ➕ Create, edit, and delete your own listings
-- ⭐ Leave reviews on listings
-- 🔐 User authentication — register, login, and logout
-- 🛡️ Authorization — only listing/review owners can modify or delete their content
-- ⚠️ Flash messages for user feedback
-- ✅ Server-side schema validation
+* Create, view, edit, and delete property listings
+* Responsive UI using Tailwind
+* Server-side and client-side form validation
+* Review system with ratings and comments
+* Session-based authentication
+* Flash messages for user feedback
+* Cookie and session management
+* Custom error handling
+* MongoDB relationships using Mongoose
+* Modular Express routing
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer      | Technology                          |
-|------------|--------------------------------------|
-| Backend    | Node.js, Express.js                  |
-| Templating | EJS, EJS-Mate (layouts)              |
-| Database   | MongoDB, Mongoose                    |
-| Auth       | Passport.js, express-session         |
-| Styling    | Tailwind CSS                         |
-| Validation | Joi                                  |
+### Backend
+
+* Node.js
+* Express.js
+
+### Database
+
+* MongoDB
+* Mongoose
+
+### Frontend
+
+* EJS
+* EJS-Mate
+* Tailwind
+
+### Authentication & Security
+
+* Passport.js
+* Express-Session
+* Cookie-Parser
+
+### Validation & Utilities
+
+* JOI
+* Method-Override
+* Connect-Flash
 
 ---
 
-## 📁 Project Structure
+## 📂 Project Structure
 
 ```
 Wanderlust/
-├── init/               # Database seed data
-│   ├── data.js
-│   └── index.js
-├── models/             # Mongoose models
-│   ├── listing.js
-│   ├── reviews.js
-│   └── user.js
-├── public/             # Static assets
-│   └── css/
-│       ├── input.css
-│       └── output.css
-├── routes/             # Express route handlers
-│   ├── listings.js
-│   ├── reviews.js
-│   └── users.js
-├── utils/              # Utility helpers
-│   ├── ExpressError.js
-│   ├── isLoggedIn.js
-│   ├── schemaValidation.js
-│   └── wrapAsync.js
-├── views/              # EJS templates
-│   ├── includes/       # Navbar, footer, flash
-│   ├── layouts/        # Boilerplate layout
-│   ├── listings/       # Listing pages
-│   └── users/          # Login & signup pages
-├── app.js              # Main application entry point
-├── package.json
-└── tailwind.config.js
+│── controllers/
+│── models/
+│── routes/
+│── views/
+│── public/
+│── utils/
+│── middleware/
+│── init/
+│── app.js
+│── package.json
 ```
 
 ---
 
-## 🚀 Getting Started
+## 📌 Features Implemented
 
-### Prerequisites
+### ✅ Listing Management
 
-- [Node.js](https://nodejs.org/) (v14 or higher)
-- [MongoDB](https://www.mongodb.com/) (local or Atlas)
+* Add new listings
+* View all listings
+* View listing details
+* Edit listings
+* Delete listings
 
-### Installation
+### ✅ Reviews
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Omkar-Bhalekar/Wanderlust.git
-   cd Wanderlust
-   ```
+* Add reviews with ratings
+* Delete reviews
+* MongoDB relationship handling
+* Cascade deletion using Mongoose middleware
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+### ✅ Form Validation
 
-3. **Set up environment variables**
+* Client-side validation using Tailwind
+* Server-side validation using JOI
+* Custom validation middleware
 
-   Create a `.env` file in the root directory:
-   ```env
-   MONGO_URI=your_mongodb_connection_string
-   SESSION_SECRET=your_secret_key
-   ```
+### ✅ Authentication
 
-4. **(Optional) Seed the database**
-   ```bash
-   node init/index.js
-   ```
+* User registration and login
+* Password hashing
+* Passport.js authentication
+* Session management
 
-5. **Start the server**
-   ```bash
-   node app.js
-   ```
+### ✅ Error Handling
 
-6. Open your browser and visit `http://localhost:8080`
+* Custom `ExpressError` class
+* Global error handler
+* Async error handling using `wrapAsync`
+
+### ✅ Middleware
+
+* Logger middleware
+* Authentication middleware
+* Authorization middleware
+* Validation middleware
+* Flash message middleware
+
+### ✅ Database Relationships
+
+* Embedded documents
+* Referenced documents using ObjectId
+* Population with `.populate()`
 
 ---
 
-## 📸 Screenshots
+## 📦 Installation
 
-> _Add screenshots of your app here_
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/wanderlust.git
+```
+
+Navigate to the project folder:
+
+```bash
+cd wanderlust
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create a `.env` file and configure your environment variables.
+
+Start the application:
+
+```bash
+npm start
+```
+
+Visit:
+
+```
+http://localhost:3000
+```
 
 ---
 
-## 🙋‍♂️ Author
+## 📚 Concepts Covered
+
+* RESTful Routing
+* MVC Architecture
+* CRUD Operations
+* Express Middleware
+* Sessions & Cookies
+* Flash Messages
+* Authentication with Passport.js
+* Password Hashing
+* Form Validation
+* MongoDB Relationships
+* Mongoose Middleware
+* Error Handling
+* Async Programming
+
+---
+
+## 🎯 Future Enhancements
+
+* Image upload with Cloudinary
+* Interactive maps using Mapbox
+* Search and filtering
+* Booking functionality
+* Wishlist feature
+* User profile management
+* Payment gateway integration
+* Admin dashboard
+
+---
+
+## 📖 Learning Outcomes
+
+This project helped in understanding:
+
+* Building full-stack web applications with Node.js and Express
+* Designing RESTful APIs
+* Working with MongoDB and Mongoose
+* Implementing authentication and authorization
+* Managing sessions and cookies
+* Handling errors effectively
+* Structuring scalable Express applications
+* Applying server-side validation and middleware
+
+---
+
+## 👨‍💻 Author
 
 **Omkar Bhalekar**
-- GitHub: [@Omkar-Bhalekar](https://github.com/Omkar-Bhalekar)
 
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+If you found this project useful, consider giving it a ⭐ on GitHub.
