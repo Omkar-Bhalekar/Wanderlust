@@ -203,6 +203,33 @@ This project helped in understanding:
 
 ---
 
+## Screenshots
+
+### 🏠 All Listings
+Browse all available property listings with pricing and short descriptions.
+
+![All Listings](screenshots/listings-page.png)
+
+### 📱 Responsive Design (Mobile View)
+The layout adapts seamlessly to smaller screens, with a collapsible menu and stacked listing cards.
+
+![Responsive Design](screenshots/responsive-mobile-view.png)
+
+### 🔐 Login Page
+Simple and clean login form for returning users to access their account.
+
+![Login Page](screenshots/login-page.png)
+
+### ➕ Add New Listing (with Form Validation)
+Client-side validation ensures required fields like title, description, price, location, and country are filled before a listing can be created.
+
+![Add New Listing Form Validation](screenshots/add-listing-form-validation.png)
+
+### ⭐ Leave a Review
+Logged-in users can rate their stay and share feedback about the host.
+
+![Leave a Review](screenshots/leave-review.png)
+
 ## 👨‍💻 Author
 
 **Omkar Bhalekar**
